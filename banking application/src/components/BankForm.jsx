@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addCash, getCash } from '../redux/bankSlice';
 import { addUser } from '../redux/usersSlice';
+import MyButton from "./UI/MyButton";
 
 const BankForm = () => {
 
@@ -55,6 +56,9 @@ const BankForm = () => {
             <button onClick={handleAddCash} className="btn btn-info">
               Внести
             </button>
+            {/* <MyButton onClick={handleAddCash} className="btn btn-info">
+              Внести
+            </MyButton> */}
           </div>
 
           <div className="d-flex justify-content-between border m-2 p-2">
