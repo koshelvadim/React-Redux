@@ -7,10 +7,10 @@ const bankSlice = createSlice({
   },
   reducers: {
     addCash: (state, action) => {
-      state.cash = state.cash + action.payload;
+      state.cash = state.cash + Number(action.payload);
     },
     getCash: (state, action) => {
-      state.cash = state.cash - action.payload;
+      state.cash = state.cash - Number(action.payload);
     },
   },
 });
