@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addCash, getCash } from '../redux/bankSlice';
 import { addUser } from '../redux/usersSlice';
-import MyButton from "./UI/MyButton";
+// import MyButton from "./UI/MyButton";
 
 const BankForm = () => {
 
