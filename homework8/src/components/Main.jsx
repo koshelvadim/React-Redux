@@ -19,7 +19,7 @@ function Main() {
   return (
     <div className="box-content">
       <Header />
-      <content className="content">
+      <div className="content">
         <div className="top_brand">
           <div className="top_brand_img">
             <img className="top_brand_pic" src={top_brand_img} alt="Man" />
@@ -113,7 +113,7 @@ function Main() {
             </figure>
           </div>
         </section>
-      </content>
+      </div>
       <Footer />
     </div>
   );
