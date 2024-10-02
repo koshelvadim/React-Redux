@@ -69,12 +69,12 @@ function CatalogPage() {
               HOME
             </a>
             <a 
-              href='true' 
+              href='#/' 
               className="breadcrums__link">
               MEN
             </a>
             <a
-              href='true'
+              href='#/'
               className="breadcrums__link breadcrums__link__highlight"
             >
               NEW ARRIVALS
@@ -92,37 +92,37 @@ function CatalogPage() {
                 <details open className="filter__item">
                   <summary className="filter__subtitle">CATEGORY</summary>
                   <div className="filter__link-box">
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Accessories
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Bags
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Denim
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Hoodies & Sweatshirts
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Jackets & Coats
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Polos
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Shirts
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Shoes
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Sweaters & Knits
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       T-Shirts
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Tanks
                     </a>
                   </div>
@@ -130,13 +130,13 @@ function CatalogPage() {
                 <details className="filter__item">
                   <summary className="filter__subtitle">BRAND</summary>
                   <div className="filter__link-box">
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Some Brand
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Some Brand
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Some Brand
                     </a>
                   </div>
@@ -144,13 +144,13 @@ function CatalogPage() {
                 <details className="filter__item">
                   <summary className="filter__subtitle">DESIGNER</summary>
                   <div className="filter__link-box">
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Some Designer
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Some Designer
                     </a>
-                    <a href='true' className="filter__link">
+                    <a href='#/' className="filter__link">
                       Some Designer
                     </a>
                   </div>
@@ -249,7 +249,7 @@ function CatalogPage() {
               <div className="catalog_nav__pagination">
                 {Array.from({ length: totalPages }, (_, index) => (
                   <a
-                    href='true'
+                    href='#/'
                     key={index}
                     onClick={() => handlePageChange(index + 1)}
                     className="catalog_nav__link"

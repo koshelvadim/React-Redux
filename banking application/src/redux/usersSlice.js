@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-  users: JSON.parse(localStorage.getItem('USERS') || "[]")
+  users: JSON.parse(localStorage.getItem("USERS") || "[]"),
 };
 
 const saveToLocalStorage = (users) => {
   localStorage.setItem("USERS", JSON.stringify(users));
-}
+};
 
 const usersSlice = createSlice({
   name: "users",
@@ -18,7 +18,7 @@ const usersSlice = createSlice({
       saveToLocalStorage(state.users);
     },
     removeUser: (state, action) => {
-      state.users = state.users.filter(user => user.id !== action.payload.id);
+      state.users = state.users.filter((user) => user.id !== action.payload.id);
       saveToLocalStorage(state.users);
     },
   },

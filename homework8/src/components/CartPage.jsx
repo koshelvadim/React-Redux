@@ -104,7 +104,7 @@ const CartPage = () => {
                           />
                         </div>
                         <a
-                          href='true'
+                          href='#/'
                           className="cart-box__close_icon"
                           onClick={() => handleRemoveItem(item.id)}
                         >
@@ -118,7 +118,7 @@ const CartPage = () => {
               <div className="cart-box__buttons">
                 <div className="cart-box__shopping_button">
                   <a
-                    href='true'
+                    href='#/'
                     className="cart-box__shopping_button_title"
                     onClick={handleClearBasket}
                   >
@@ -162,7 +162,7 @@ const CartPage = () => {
                 required
               />
               <div className="cart-box__shipping_button">
-                <a className="cart-box__shipping_button_title" href='true'f>
+                <a className="cart-box__shipping_button_title" href='#/'f>
                   GET A QUOTE
                 </a>
               </div>
@@ -180,7 +180,7 @@ const CartPage = () => {
               </div>
               <hr className="cart-box__checkout-line" />
               <div className="cart-box__checkout-button">
-                <a className="cart-box__checkout_button_title" href='true'>
+                <a className="cart-box__checkout_button_title" href='#/'>
                   PROCEED TO CHECKOUT
                 </a>
               </div>
