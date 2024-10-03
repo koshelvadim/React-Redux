@@ -1,79 +1,81 @@
-import React, { createContext, useState, useEffect } from "react";
+// ПЕРЕДЕЛАЛ ВСЕ НА REDUX !!!
 
-// Создание контекста корзины
-export const BasketContext = createContext();
+// import React, { createContext, useState, useEffect } from "react";
 
-// Создание компонента корзины
-const BasketItems = (props) => {
-  // корзина загружается из localStorage, если пуст, то []
-  const [basketItems, setBasketItems] = useState(
-    JSON.parse(localStorage.getItem("basket")) || []
-  );
+// // Создание контекста корзины
+// export const BasketContext = createContext();
 
-  // Функция добавления товара в корзину по его id
-  const addToBasket = (productId) => {
-    setBasketItems((prevCartItems) => {
-      // Проверка наличия товар с таким id в корзине
-      const existingItem = prevCartItems.find((item) => item.id === productId);
-      if (existingItem) {
-        // Если товар уже есть в корзине, его количество увеличивается + 1
-        return prevCartItems.map((item) =>
-          item.id === productId
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      } else {
-        // Если товара не было в корзине, такой добавляется в корзину в количестве 1.
-        return [...prevCartItems, { id: productId, quantity: 1 }];
-      }
-    });
-  };
+// // Создание компонента корзины
+// const BasketItems = (props) => {
+//   // корзина загружается из localStorage, если пуст, то []
+//   const [basketItems, setBasketItems] = useState(
+//     JSON.parse(localStorage.getItem("basket")) || []
+//   );
 
-  // Функция удаления товара из корзины по его id
-  const removeFromBasket = (productId) => {
-    setBasketItems((prevCartItems) =>
-      // возращает массив кроме элемента с id
-      prevCartItems.filter((item) => item.id !== productId)
-    );
-  };
+//   // Функция добавления товара в корзину по его id
+//   const addToBasket = (productId) => {
+//     setBasketItems((prevCartItems) => {
+//       // Проверка наличия товар с таким id в корзине
+//       const existingItem = prevCartItems.find((item) => item.id === productId);
+//       if (existingItem) {
+//         // Если товар уже есть в корзине, его количество увеличивается + 1
+//         return prevCartItems.map((item) =>
+//           item.id === productId
+//             ? { ...item, quantity: item.quantity + 1 }
+//             : item
+//         );
+//       } else {
+//         // Если товара не было в корзине, такой добавляется в корзину в количестве 1.
+//         return [...prevCartItems, { id: productId, quantity: 1 }];
+//       }
+//     });
+//   };
 
-  // Функция изменения количества товаров в корзине
-  const updateBasketItemQuantity = (productId, quantityChange) => {
-    setBasketItems(
-      basketItems.map((item) =>
-        item.id === productId
-          ? {
-              ...item,
-              quantity: Math.max(1, quantityChange), // Минимум 1 единица товара в корзине
-            }
-          : item
-      )
-    );
-  };
+//   // Функция удаления товара из корзины по его id
+//   const removeFromBasket = (productId) => {
+//     setBasketItems((prevCartItems) =>
+//       // возращает массив кроме элемента с id
+//       prevCartItems.filter((item) => item.id !== productId)
+//     );
+//   };
 
-  // Очистка корзины
-  const clearBasket = () => {
-    setBasketItems([]);
-  };
+//   // Функция изменения количества товаров в корзине
+//   const updateBasketItemQuantity = (productId, quantityChange) => {
+//     setBasketItems(
+//       basketItems.map((item) =>
+//         item.id === productId
+//           ? {
+//               ...item,
+//               quantity: Math.max(1, quantityChange), // Минимум 1 единица товара в корзине
+//             }
+//           : item
+//       )
+//     );
+//   };
 
-  // Имитация бэкенда: сохранение состояния корзины в localStorage при каждом изменении
-  useEffect(() => {
-    localStorage.setItem("basket", JSON.stringify(basketItems));
-  }, [basketItems]);
+//   // Очистка корзины
+//   const clearBasket = () => {
+//     setBasketItems([]);
+//   };
 
-  return (
-    <BasketContext.Provider
-      value={{
-        basketItems,
-        addToBasket,
-        removeFromBasket,
-        clearBasket,
-        updateBasketItemQuantity,
-      }}
-    >
-      {props.children}
-    </BasketContext.Provider>
-  );
-};
+//   // Имитация бэкенда: сохранение состояния корзины в localStorage при каждом изменении
+//   useEffect(() => {
+//     localStorage.setItem("basket", JSON.stringify(basketItems));
+//   }, [basketItems]);
 
-export default BasketItems;
+//   return (
+//     <BasketContext.Provider
+//       value={{
+//         basketItems,
+//         addToBasket,
+//         removeFromBasket,
+//         clearBasket,
+//         updateBasketItemQuantity,
+//       }}
+//     >
+//       {props.children}
+//     </BasketContext.Provider>
+//   );
+// };
+
+// export default BasketItems;

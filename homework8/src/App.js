@@ -2,11 +2,10 @@ import "./style/style.scss";
 // библиотека для метаданных head
 import { Helmet } from "react-helmet";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import Main from "./components/Main";
 import CatalogPage from "./components/CatalogPage";
-import CartPage from "./components/CartPage";
 import RegistrationPage from "./components/RegistrationPage";
+import BasketPage from "./components/BasketPage";
 
 
 function App() {
@@ -24,7 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} exact />
           <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/cart" element={<BasketPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
         </Routes>
       </Router>

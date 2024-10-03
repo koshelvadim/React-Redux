@@ -1,21 +1,18 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { BasketContext } from "../contexts/BasketContext";
 // Импорт массива продуктов
 import products from "../database/db"; 
 // импорт иконки свг как компонента
 import { ReactComponent as CloseIcon } from "../img/close_icon.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { clearBasket, removeFromBasket, updateBasketItemQuantity } from "../redux/basketReducer";
 
-const CartPage = () => {
-  // Получение функционала из BasketContext
-  const {
-    basketItems,
-    removeFromBasket,
-    updateBasketItemQuantity,
-    clearBasket,
-  } = useContext(BasketContext);
+const BasketPage = () => {
+
+  const basketItems = useSelector(state => state.basketItems.basketItems);
+  const dispatch = useDispatch();
 
   // Состояние для хранения общей стоимости
   const [totalPrice, setTotalPrice] = useState(0);
@@ -31,19 +28,14 @@ const CartPage = () => {
   }, [basketItems]);
 
   // Изменение количества товара в корзине
-  const handleQuantityChange = (event, productId) => {
-    const newQuantity = parseInt(event.target.value);
-    updateBasketItemQuantity(productId, newQuantity);
+  const handleQuantityChange = (e, product) => {
+    const value = e.target.value;
+    dispatch(updateBasketItemQuantity({ product, value }));
   };
 
   // Удаления товара из корзины
-  const handleRemoveItem = (productId) => {
-    removeFromBasket(productId);
-  };
-
-  // Очистка корзины
-  const handleClearBasket = () => {
-    clearBasket();
+  const handleRemoveItem = (product) => {
+    dispatch(removeFromBasket(product));
   };
 
   return (
@@ -60,33 +52,32 @@ const CartPage = () => {
             <div className="cart-box__left">
               <div className="cart-box__products">
                 {basketItems.map((item) => {
-                  const product = products.find((product) => product.id === item.id);
-                  if (product)
+                  if (item)
                     return (
                       <div className="cart-box__product_card" key={item.id}>
                         <div className="cart-box__card_img">
-                          <img src={product.imageUrl} alt="productImg" />
+                          <img src={item.imageUrl} alt="productImg" />
                         </div>
                         <div className="cart-box__card_text">
                           <h4 className="cart-box__card_title">
-                            {product.title}
+                            {item.title}
                           </h4>
                           <p className="cart-box__card_content">
                             Price:&nbsp;
                             <span className="cart-box__card_price cart-box__card_value">
-                              ${product.price.toFixed(2)}
+                              ${item.price}
                             </span>
                           </p>
                           <p className="cart-box__card_content">
                             Color:&nbsp;
                             <span className="cart-box__card_value">
-                              {product.color}
+                              {item.color}
                             </span>
                           </p>
                           <p className="cart-box__card_content">
                             Size:&nbsp;
                             <span className="cart-box__card_value">
-                              {product.size}
+                              {item.size}
                             </span>
                           </p>
                           <label
@@ -100,13 +91,13 @@ const CartPage = () => {
                             type="number"
                             min="1"
                             value={item.quantity}
-                            onChange={(e) => handleQuantityChange(e, item.id)}
+                            onChange={(e) => handleQuantityChange(e,item)}
                           />
                         </div>
                         <a
                           href='#/'
                           className="cart-box__close_icon"
-                          onClick={() => handleRemoveItem(item.id)}
+                          onClick={() => handleRemoveItem(item)}
                         >
                           <CloseIcon />
                         </a>
@@ -120,7 +111,7 @@ const CartPage = () => {
                   <a
                     href='#/'
                     className="cart-box__shopping_button_title"
-                    onClick={handleClearBasket}
+                    onClick={() => dispatch(clearBasket())}
                   >
                     Clear shopping cart
                   </a>
@@ -170,12 +161,12 @@ const CartPage = () => {
             <div className="cart-box__checkout-box">
               <div className="cart-box__subtotal">
                 <div>SUB TOTAL</div>
-                <div>${totalPrice.toFixed(2)}</div>
+                <div>${totalPrice}</div>
               </div>
               <div className="cart-box__grandtotal">
                 <div>GRAND TOTAL</div>
                 <div className="cart-box__totalprice">
-                  ${totalPrice.toFixed(2)}
+                  ${totalPrice}
                 </div>
               </div>
               <hr className="cart-box__checkout-line" />
@@ -193,4 +184,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default BasketPage;

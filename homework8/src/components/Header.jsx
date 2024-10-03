@@ -1,19 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
-
-import { BasketContext } from "../contexts/BasketContext";
-
 import {HandySvg} from 'handy-svg';
 import header_logo from "../img/header_logo.svg";
 import search_icon from "../img/search_icon.svg";
 import { ReactComponent as МenuIcon } from "../img/menu_icon.svg";
 import { ReactComponent as UserIcon } from "../img/user_icon.svg";
 import { ReactComponent as CartIcon } from '../img/cart_icon.svg';
+import { useSelector } from 'react-redux';
 
 function Header() {
-    // Получение количества товаров в корзине из контекста
-    const { basketItems } = useContext(BasketContext);
-    const totalItems = basketItems.reduce((total, item) => total + item.quantity, 0);
+
+    const basketItems = useSelector(state => state.basketItems.basketItems);
+    const totalItems = Number(basketItems.reduce((total, item) => total + item.quantity, 0));
 
     return (
         <header className="header center">
