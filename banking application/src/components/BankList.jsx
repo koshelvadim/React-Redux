@@ -23,27 +23,34 @@ const BankList = () => {
 
   // Состояние для текущей страницы
   const [currentPage, setCurrentPage] = useState(1);
-  // Добавляем активный класс после монтирования компонента
+  // Добавляем активный класс после
   useEffect(() => {
     getActiveClassPagination(1)
   }, []);
+
   // Количество карточек на одной странице
-  const pageSize = 4;
+  const pageSize = 14;
+
   // Обращение к state.users
   const users = useSelector((state) => state.users.users);
+  
   const dispatch = useDispatch();
+
   // Удаление пользователя
   const handleClickRemoveUser = (user) => {
     dispatch(removeUser(user));
   };
+
   // Функция установки текущей страницы
   const handlePageChange = (pageNumber) => {
-    console.log(pageNumber);
     setCurrentPage(pageNumber);
     getActiveClassPagination(pageNumber);
   };
+  
   // Формирование набора карточек для отображения на текущей странице
   const displayedProducts = pagination(users, pageSize, currentPage);
+  console.log(displayedProducts);
+  
   // Определение количества отображаемых страниц
   const totalPages = Math.ceil(users.length / pageSize);
 
@@ -55,10 +62,10 @@ const BankList = () => {
           <>
             <div className="container d-flex flex-wrap mt-3 gap-2">
               {displayedProducts.map((user, index) => (
-                <div key={user.id} className="card" style={{width: '18rem'}}>
+                <div key={user.id} className="card" style={{width: '16rem'}}>
                   <div className="card-body">
                     <h5 className="card-title">{index + 1}. {user.nameUser}</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p className="card-text">title: {user.titleUser}</p>
                     <button
                     className="btn btn-primary"
                     onClick={() => handleClickRemoveUser(user)}

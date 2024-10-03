@@ -9,9 +9,11 @@ const BankForm = () => {
   const [valueAdd, setValueAdd] = useState("");
   const [valueGet, setValueGet] = useState("");
   const [nameUser, setNameUser] = useState("");
+  const [titleUser, setTitleUser] = useState("");
 
   const dispatch = useDispatch();
   const userNameInput = useRef();
+  const userTitleInput = useRef();
   const cash = useSelector((state) => state.bank.cash);
 
   const handleAddCash = () => {
@@ -29,16 +31,20 @@ const BankForm = () => {
   };
 
   const handleAddUser = () => {
-    if (nameUser.trim() !== "") {
+    if (nameUser.trim() !== "" && titleUser.trim() !== "") {
       const user = {
         nameUser,
+        titleUser,
         id: Date.now(),
       };
       userNameInput.current.classList.remove("border-danger");
+      userTitleInput.current.classList.remove("border-danger");
       dispatch(addUser(user));
       setNameUser("");
+      setTitleUser("");
     } else {
       userNameInput.current.classList.add("border-danger");
+      userTitleInput.current.classList.add("border-danger");
     }
   };
 
@@ -80,6 +86,13 @@ const BankForm = () => {
               value={nameUser}
               onChange={(e) => setNameUser(e.target.value)}
               placeholder="enter name"
+            />
+            <input
+              ref={userTitleInput}
+              type="text"
+              value={titleUser}
+              onChange={(e) => setTitleUser(e.target.value)}
+              placeholder="enter title"
             />
             <button onClick={handleAddUser} className="btn btn-info">
               Добавить пользователя
