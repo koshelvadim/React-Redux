@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 function Header() {
 
     const basketItems = useSelector(state => state.basketItems.basketItems);
-    const totalItems = Number(basketItems.reduce((total, item) => total + item.quantity, 0));
+    const totalItems = basketItems.reduce((total, item) => total + item.quantity, 0);
 
     return (
         <header className="header center">

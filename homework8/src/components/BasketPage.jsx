@@ -29,7 +29,7 @@ const BasketPage = () => {
 
   // Изменение количества товара в корзине
   const handleQuantityChange = (e, product) => {
-    const value = e.target.value;
+    const value = Number(e.target.value);
     dispatch(updateBasketItemQuantity({ product, value }));
   };
 
